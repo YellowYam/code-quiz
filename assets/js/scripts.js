@@ -2,10 +2,10 @@
 
 //Q1
 var question1 = 'What DOM traversal method moves laterally to the next child node?'
-var responseQ1R1 = "";
-var responseQ1R2 = "";
-var responseQ1R3 = "";
-var responseQ1R4 = "";
+var responseQ1R1 = "previousSibling"; 
+var responseQ1R2 = "nextSibling";
+var responseQ1R3 = "parentNode";
+var responseQ1R4 = "children";
 
 //Q2
 var question2 = 'Placing an event listener on a parent node to minimize the active listeners is called ___.'
@@ -41,6 +41,7 @@ var responseQ5R4 = "";
 var startButton = document.querySelector('#start-button');
 var gameRules = document.querySelector('p#rules');
 var mainWindow = document.querySelector('main');
+var timerDisplay = document.querySelector('h2#timer');
 
 //Global variables
 
@@ -78,12 +79,9 @@ for(let i = 0; i < numQuestions; i++){
 
 //Loads the next question
 function renderQuestion(currentQuestion){
-
-    if(!currentQuestion){
-        currentQuestion = 1;
-    }
     
-    
+    mainWindow.appendChild(questionNode[currentQuestion]);
+    mainWindow.appendChild(responseList[currentQuestion]);
 }
 
 
@@ -92,15 +90,25 @@ function startQuiz(e) {
 
     e.preventDefault();
 
-    var timeLeft = 300;
+    currentQuestion = 0;
+
+    var timeLeft = 10;
+    timerDisplay.innerText = "Time Left: " + timeLeft;
 
     //Clear the quiz cover
     mainWindow.removeChild(gameRules);
     mainWindow.removeChild(startButton);
 
+    renderQuestion(currentQuestion);
+
     //Start the quiz timer
-    setInterval(() => {
+    var timerVariable = setInterval(() => {
         timeLeft--;
+        timerDisplay.innerText = "Time Left: " + timeLeft;
+
+        if(timeLeft === 0){
+            clearInterval(timerVariable);
+        }
     }, 1000);
 
 }
