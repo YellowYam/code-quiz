@@ -66,3 +66,18 @@ li.\.question-item:hover {
     background-color: var(--humanFlesh);
     cursor: crosshair;
 }
+
+p.\.question-header {
+    text-align: center;
+    font-size: large;
+    color: var(--foilage);
+}
+
+label {
+    margin: 0px 1%;
+}
+
+input {
+    text-align: center;
+    margin: 0px 1%;
+}
