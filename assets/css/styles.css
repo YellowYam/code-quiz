@@ -35,11 +35,11 @@ main{
     flex-direction: column;
 }
 
-p#rules {
+#rules {
     text-align: center;
 }
 
-h2#timer {
+#timer {
     margin-right: 5px;
 }
 
