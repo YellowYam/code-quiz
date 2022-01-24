@@ -309,8 +309,9 @@ function removeQuestion() {
 function evaluateResponse(e) {
     var target
     target = e.target;
+    console.log(target);
 
-    if (target.getAttribute('class') == '.question-list') {
+    if (target.getAttribute('class') == 'question-list') {
         return '';
     }
 
