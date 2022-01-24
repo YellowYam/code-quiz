@@ -13,7 +13,7 @@ header{
     color: var(--foilage);
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -33,6 +33,7 @@ a#highscores {
 main{
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 #rules {
@@ -47,11 +48,13 @@ main{
 .question-header, .question-list {
     align-self: center;
     color: var(--foilage);
+    margin: 10px 20px;
 } 
 
 .question-list {
     list-style-type: disclosure-closed;
     list-style-position: inside;
+    margin-right: 10%;
 }
 
 .question-item {
@@ -76,11 +79,13 @@ p.question-header {  /*For the quiz finished headline */
 
 label {
     margin: 0px 1%;
+    color: var(--foilage);
 }
 
 input {
     text-align: center;
-    margin: 0px 1%;
+    margin: 0px 1% 1% 1%;
+    border: 1px solid var(--foilage);
 }
 
 #feedbackNode {
@@ -94,4 +99,45 @@ input {
 #highScoreList {
     background-color: var(--humanFlesh);
     color: var(--foilage);
+}
+
+button{
+    color: var(--foilage);
+}
+#goBackButton {
+    margin-bottom: 5px;
+}
+
+
+/*Adjust positioning for mobile devices*/
+@media screen and (max-width: 500px) {
+    header{
+        font-size: small;
+    }
+
+    .question-list {
+        margin-right: 20%;
+    }
+
+}
+
+
+@media screen and (max-width: 425px) {
+    header{
+        font-size: x-small;
+    } 
+
+    h1{
+        margin-left: 10px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    header{
+        font-size: xx-small;
+    }
+
+    main{
+        font-size: small;
+    }
 }

@@ -63,7 +63,8 @@ var highScoreList = document.createElement('ol');           //list to hold high 
     highScoreList.setAttribute('id', "highScoreList");
 
 var goBackButton = document.createElement('button');  //button to return to quiz rules
-goBackButton.innerText = "Go Back";
+    goBackButton.setAttribute('id', 'goBackButton');
+    goBackButton.innerText = "Go Back";
 
 var clearScoresButton = document.createElement('button'); //button to clear the high scores
 clearScoresButton.innerText = 'Clear Scores';
@@ -263,7 +264,7 @@ function quizScoreEntry() {
 
     var score = (correctReponses / numQuestions) * 100;
     quizScoreDisplay.innerText = "Your score is: " + score + "%."
-    quizScoreDisplay.setAttribute('class', '.question-header');
+    quizScoreDisplay.setAttribute('class', 'question-header');
 
     mainWindow.appendChild(quizScoreDisplay);
     mainWindow.appendChild(quizIntitialsInputLabel);
