@@ -21,7 +21,7 @@ h1{
     margin: initial;
 }
 
-a#highscores {
+#highscores {
     text-decoration: none;
     color: var(--foilage);
     color: an;
@@ -29,6 +29,10 @@ a#highscores {
     font-size: larger;
     border: 2px dashed var(--foilage);
     padding: 5px;
+}
+
+#highscores:hover{
+    cursor: pointer;
 }
 main{
     display: flex;

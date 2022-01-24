@@ -38,7 +38,7 @@ var startButton = document.querySelector('#start-button');
 var gameRules = document.querySelector('p#rules');
 var mainWindow = document.querySelector('main');
 var timerDisplay = document.querySelector('h2#timer');
-var highScoresLink = document.querySelector('a');
+var highScoresLink = document.querySelector('#highscores');
 
 var quizFinishedHeadline = document.createElement('h2');            //Headline for the quiz ending
 quizFinishedHeadline.setAttribute('class', 'question-header');
@@ -163,7 +163,7 @@ function clearMainWindow() {
 
 //Loads highscores
 function renderHighScores() {
-
+    debugger;
     clearMainWindow();
 
     var numScores = highScoreList.childElementCount;  // Clear the high score list
@@ -173,7 +173,8 @@ function renderHighScores() {
         }
     }
 
-    if (localStorage.getItem('highScores') != 'null') {
+                                                        
+    if (localStorage.getItem('highScores') != 'null' && localStorage.getItem('highScores') != null) {
         userScores = JSON.parse(localStorage.getItem('highScores'));  //Get the scores from local storage
     }
 
@@ -230,7 +231,7 @@ function recordScore(e) {
         return '';
     }
 
-    if (localStorage.getItem('highScores') != 'null') {
+    if (localStorage.getItem('highScores') != 'null' && localStorage.getItem('highScores') != null) {
         userScores = JSON.parse(localStorage.getItem('highScores'));
     }
 
@@ -309,7 +310,6 @@ function removeQuestion() {
 function evaluateResponse(e) {
     var target
     target = e.target;
-    console.log(target);
 
     if (target.getAttribute('class') == 'question-list') {
         return '';
