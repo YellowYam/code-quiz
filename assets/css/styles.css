@@ -134,6 +134,11 @@ button{
     h1{
         margin-left: 10px;
     }
+
+    /*disables hover animation on mobile touchscreens*/
+    .question-item:hover {
+        background-color: var(--fuscia);
+    }
 }
 
 @media screen and (max-width: 350px) {
