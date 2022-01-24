@@ -37,23 +37,24 @@ main{
 
 #rules {
     text-align: center;
+    color: var(--foilage);
 }
 
 #timer {
     margin-right: 5px;
 }
 
-h2.\.question-header, ol.\.question-list {
+.question-header, .question-list {
     align-self: center;
     color: var(--foilage);
 } 
 
-ol.\.question-list {
+.question-list {
     list-style-type: disclosure-closed;
     list-style-position: inside;
 }
 
-li.\.question-item {
+.question-item {
     background-color: var(--fuscia);
     color: var(--foilage);
     margin: 5px;
@@ -62,12 +63,12 @@ li.\.question-item {
     padding: 4px;
 }
 
-li.\.question-item:hover {
+.question-item:hover {
     background-color: var(--humanFlesh);
     cursor: crosshair;
 }
 
-p.\.question-header {
+p.question-header {  /*For the quiz finished headline */
     text-align: center;
     font-size: large;
     color: var(--foilage);
@@ -80,4 +81,17 @@ label {
 input {
     text-align: center;
     margin: 0px 1%;
+}
+
+#feedbackNode {
+    background-color: var(--humanFlesh);
+    color: var(--foilage);
+    text-align: center;
+    align-self: center;
+    min-width: 40vw;
+}
+
+#highScoreList {
+    background-color: var(--humanFlesh);
+    color: var(--foilage);
 }

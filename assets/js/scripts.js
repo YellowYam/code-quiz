@@ -41,7 +41,7 @@ var timerDisplay = document.querySelector('h2#timer');
 var highScoresLink = document.querySelector('a');
 
 var quizFinishedHeadline = document.createElement('h2');            //Headline for the quiz ending
-quizFinishedHeadline.setAttribute('class', '.question-header');
+quizFinishedHeadline.setAttribute('class', 'question-header');
 quizFinishedHeadline.textContent = 'Quiz Finished!';
 
 var quizScoreDisplay = document.createElement('p');
@@ -56,10 +56,11 @@ quizHighscoreSubmission.setAttribute('type', 'submit');
 quizHighscoreSubmission.innerText = 'Submit';
 
 var highScoreHeadline = document.createElement('h2');         //Headline for high scores
-highScoreHeadline.setAttribute('class', '.question-header');
+highScoreHeadline.setAttribute('class', 'question-header');
 highScoreHeadline.textContent = 'High Scores:';
 
 var highScoreList = document.createElement('ol');           //list to hold high score items
+    highScoreList.setAttribute('id', "highScoreList");
 
 var goBackButton = document.createElement('button');  //button to return to quiz rules
 goBackButton.innerText = "Go Back";
@@ -68,7 +69,7 @@ var clearScoresButton = document.createElement('button'); //button to clear the 
 clearScoresButton.innerText = 'Clear Scores';
 
 var responseFeedbackNode = document.createElement('p');
-responseFeedbackNode.setAttribute('id', '#feedbackNode');
+responseFeedbackNode.setAttribute('id', 'feedbackNode');
 
 //Globla variables (UI)
 
@@ -91,16 +92,16 @@ function generateQuizUIElements() {
 
     for (let i = 0; i < quizObject.length; i++) {
         questionNode[i] = document.createElement('h2');            //Question Nodes 0 ... i
-        questionNode[i].setAttribute('class', '.question-header');
+        questionNode[i].setAttribute('class', 'question-header');
         questionNode[i].textContent = `${quizObject[i].question}`
 
         responseList[i] = document.createElement('ol');            //Response List Nodes 0 ... i
-        responseList[i].setAttribute('class', '.question-list');
+        responseList[i].setAttribute('class', 'question-list');
 
         responseItemNode[i] = [];
         for (let j = 0; j < quizObject[i].responses.length; j++) {
             responseItemNode[i][j] = document.createElement('li');           //Response list items
-            responseItemNode[i][j].setAttribute('class', '.question-item');
+            responseItemNode[i][j].setAttribute('class', 'question-item');
             responseItemNode[i][j].setAttribute('data-true', 'false');
 
             responseItemNode[i][j].textContent = quizObject[i].responses[j];
@@ -141,7 +142,7 @@ function giveFeedback(feedback) {
 
 
     var timeout = setTimeout(() => {  // Delcare a new timer to control feedback removal
-        if (mainWindow.querySelector('#feedbackNode') !== 'null') {
+        if (mainWindow.querySelector('#feedbackNode') !== null) {
             mainWindow.removeChild(responseFeedbackNode);
         }
     }, 1500);
@@ -177,7 +178,7 @@ function renderHighScores() {
 
     for (let i = 0; i < userScores.length; i++) {          //Write the scores into list items
         var scoreRecordListItem = document.createElement('li');
-        scoreRecordListItem.innerText = `${userScores[i].userInitials} : ${userScores[i].quizScore}`;
+        scoreRecordListItem.innerText = `${userScores[i].userInitials} | ${userScores[i].quizScore}`;
         highScoreList.appendChild(scoreRecordListItem);  // , and append them to the high score list
     }
 
@@ -222,13 +223,19 @@ function recordScore(e) {
     //Mem. If there's time, pass the score variable from the score entry function
 
     e.preventDefault();
+
+    if(quizIntitialsInput.value.trim() === ''){
+        window.alert('Please enter your intitials.')
+        return '';
+    }
+
     if (localStorage.getItem('highScores') != 'null') {
         userScores = JSON.parse(localStorage.getItem('highScores'));
     }
 
 
     var score = (correctReponses / numQuestions) * 100;
-    var initials = quizIntitialsInput.value.trim();
+    var initials = quizIntitialsInput.value.toUpperCase().trim();
 
     var userScore = {
         quizScore: score,
@@ -301,7 +308,6 @@ function removeQuestion() {
 function evaluateResponse(e) {
     var target
     target = e.target;
-    console.log(target);
 
     if (target.getAttribute('class') == '.question-list') {
         return '';
@@ -312,7 +318,6 @@ function evaluateResponse(e) {
         clearMainWindow();
         currentQuestion++;
         renderQuestion(currentQuestion);
-        console.log(timeout);
         if (timeout !== null) {
             clearTimeout(timeout);
         }
@@ -323,7 +328,6 @@ function evaluateResponse(e) {
         timeLeft--;
         currentQuestion++;
         renderQuestion(currentQuestion);
-        console.log(timeout);
         if (timeout !== null) {
             clearTimeout(timeout);
         }
@@ -363,6 +367,7 @@ function startQuiz(e) {
             clearInterval(timerVariable);
 
             if (currentQuestion !== numQuestions) {
+                clearMainWindow();
                 quizScoreEntry();
             }
         }
