@@ -12,5 +12,11 @@ Allows the user to practice coding interview skills. Presents the user with a co
 ## Page Link
 [Code Quiz Link](https://yellowyam.github.io/code-quiz/)
 
+## Contact
+
+| Name    | GitHub Username |
+|---------|-----------------|
+| Cody S. | YellowYam       |
+
 ## License
 ![MIT License](https://img.shields.io/badge/license-MIT-green)
