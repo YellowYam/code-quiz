@@ -8,5 +8,9 @@ Allows the user to practice coding interview skills. Presents the user with a co
 
 ## Screenshot
 ![A screenshot of the code quiz](/assets/images/screenshot.gif)
+
 ## Page Link
 [Code Quiz Link](https://yellowyam.github.io/code-quiz/)
+
+## License
+![MIT License](https://img.shields.io/badge/license-MIT-green)
